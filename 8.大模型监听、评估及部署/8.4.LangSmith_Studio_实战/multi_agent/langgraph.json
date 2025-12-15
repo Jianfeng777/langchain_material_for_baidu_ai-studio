@@ -1,0 +1,7 @@
+{"dependencies": ["."],
+  "graphs": {
+    "supervisor": "./src/agent.py:agent",
+    "calendar": "./src/agent.py:calendar_agent",
+    "email": "./src/agent.py:email_agent"
+  },
+  "env": ".env"}
