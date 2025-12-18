@@ -3,6 +3,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 import os
+import gradio as gr
 
 def get_session_history(session_id: str):
     if session_id not in session_store:
@@ -25,7 +26,9 @@ def llm_response(content, history):
     ])
     
     chain = prompt | llm
-
+    
+    session_id = "user_1"
+    
     chain_with_history = RunnableWithMessageHistory(
         runnable=chain,
         get_session_history=get_session_history,
