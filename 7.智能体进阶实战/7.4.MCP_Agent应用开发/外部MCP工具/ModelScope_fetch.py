@@ -11,7 +11,7 @@ async def main():
     client = MultiServerMCPClient({
         "fetch": {
             "transport": "http",
-            "url": "https://mcp.api-inference.modelscope.net/2d1609a7c8fe45/mcp",
+            "url": "https://mcp.api-inference.modelscope.net/148a40bcfa7448/mcp",
             "headers": {
                 "Authorization": "Bearer ms-dec9499d-dc29-405d-8976-a3eed24b0918"
             }
