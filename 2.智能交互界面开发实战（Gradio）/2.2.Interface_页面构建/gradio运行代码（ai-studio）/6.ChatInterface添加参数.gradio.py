@@ -23,16 +23,21 @@ def chat_fn(message, history):
   return reply
 
 demo = gr.ChatInterface(
-  fn=chat_fn,
-  title="AI Studio 小助理",
-  description="能够提供开发相关的知识，给开发者提供搜索帮助建议。",
-  examples=[
-    "我在使用AI Studio实训平台时遇到了问题，应该如何寻求帮助？",
-    "AI Studio实训平台支持哪些编程语言？",
-    "如何在AI Studio实训平台上部署我的模型？",
-  ],
-  cache_examples= False,
-  save_history = True,
-)
+ fn=chat_fn,
+ title="AI Studio 小助理",
+ description="能够提供开发相关的知识，给开发者提供帮助。",
+ examples=[
+  "我在使用AI Studio实训平台时遇到了问题，应该如何寻求帮助？",
+  "AI Studio实训平台支持哪些编程语言？",
+  "如何在AI Studio实训平台上部署我的模型？"],
+ cache_examples= False,
+ save_history = True,
+ multimodal=False,
+ editable=True,
+ chatbot=gr.Chatbot(
+ label="AI Studio 小助理 Chatbot",
+ value=[{"role": "user", "content": "请输入问题后开始对话。"}, 
+ {"role": "assistant", "content": "你好！我是AI Studio小助理"}],
+ min_width = 200))
 
 demo.launch()

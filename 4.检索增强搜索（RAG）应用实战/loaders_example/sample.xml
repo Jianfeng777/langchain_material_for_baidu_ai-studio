@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<course>
+    <title>LangChain RAG 应用实战</title>
+    <chapter id="1">
+        <name>文档加载</name>
+        <content>介绍 TextLoader、PDF Loader、Unstructured Loader</content>
+    </chapter>
+    <chapter id="2">
+        <name>文本切分</name>
+        <content>RecursiveCharacterTextSplitter 的使用</content>
+    </chapter>
+    <summary>
+        XML 文件适合用于结构化数据示例。
+    </summary>
+</course>
