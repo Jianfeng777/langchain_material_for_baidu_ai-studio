@@ -1,6 +1,0 @@
-{"dependencies": ["."],
-  "graphs": {
-    "agent": "./src/agent.py:conversational_agent",
-    "workflow": "./src/agent.py:workflow"
-  },
-  "env": ".env"}
