@@ -1,6 +1,4 @@
-from langchain_community.document_loaders import (
-  WebBaseLoader,
-  YoutubeLoader)
+from langchain_community.document_loaders import WebBaseLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import DashScopeEmbeddings
 from langchain_chroma import Chroma
@@ -10,7 +8,7 @@ from langchain_community.document_loaders import (
   PyMuPDFLoader,
   Docx2txtLoader,
   UnstructuredMarkdownLoader,
-  UnstructuredExcelLoader)
+  UnstructuredXMLLoader)
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.runnables import RunnablePassthrough
@@ -28,10 +26,7 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500,
 
 def load_web_content(url: str):
   # 判断内容类型
-  if 'youtube.com' in url or 'youtu.be' in url:
-    loader = YoutubeLoader(url)
-  else:
-    loader = WebBaseLoader(url)
+  loader = WebBaseLoader(url)
   docs = loader.load()
   # 文本切分
   splits = text_splitter.split_documents(docs)
@@ -46,15 +41,15 @@ def load_document(file_path: str):
  file_type = file_path.split('.')[-1].lower()
  # 根据文件类型选择合适的 Loader
  if file_type == 'txt':
-  loader = TextLoader(file_path)
+  loader = TextLoader(file_path, encoding="utf-8")
  elif file_type == 'pdf':
   loader = PyMuPDFLoader(file_path)
  elif file_type == 'docx':
   loader = Docx2txtLoader(file_path)
  elif file_type == 'md':
   loader = UnstructuredMarkdownLoader(file_path)
- elif file_type == 'xlsx':
-  loader = UnstructuredExcelLoader(file_path)
+ elif file_type == 'xml':
+  loader = UnstructuredXMLLoader(file_path)
  else:
   raise ValueError(f"不支持的文件类型: {file_type}")
  # 加载文档
