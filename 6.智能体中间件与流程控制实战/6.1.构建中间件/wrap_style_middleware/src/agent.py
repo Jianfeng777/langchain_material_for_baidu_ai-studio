@@ -7,7 +7,6 @@ llm = ChatTongyi(api_key=os.environ.get("DASHSCOPE_API_KEY"), model="qwen-turbo"
 tools = load_tools(["arxiv"])
 
 from langchain.agents.middleware import wrap_model_call, ModelRequest, ModelResponse
-from typing import Callable
 from typing import Callable, Awaitable
 
 @wrap_model_call
