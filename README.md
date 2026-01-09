@@ -98,8 +98,8 @@
 
 ```bash
 # 1) 克隆仓库
-git clone <your-repo-url>
-cd <your-repo-name>
+git clone git@github.com:SmartFlowAI/langchain_material_for_baidu_ai-studio.git
+cd langchain_material_for_baidu_ai-studio
 
 # 2) 创建环境
 conda env create -f environment.yml
@@ -245,7 +245,6 @@ python "1.快速创建.gradio.py"
 ├── README.md
 │
 ├── 1.大语言模型应用基础/
-│   └── *.ipynb
 │
 ├── 2.智能交互界面开发实战（Gradio）/
 │   ├── 2.1.（选看）函数/
