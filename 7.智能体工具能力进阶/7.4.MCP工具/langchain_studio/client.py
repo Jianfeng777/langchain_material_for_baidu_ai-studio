@@ -13,7 +13,7 @@ async def main():
     "DogUtils": {
       "transport": "stdio",
       "command": "python",
-      "args": [r"7.智能体进阶实战\7.4.MCP_Agent应用开发\langchain_studio\server.py"]}}) # 替换本地路径
+      "args": [r"7.智能体工具能力进阶\7.4.MCP工具\langchain_studio\server.py"]}}) # 替换本地路径
   # 异步加载 MCP 工具
   tools = await client.get_tools()
   agent = create_agent(model=ChatTongyi(model="qwen-max"), 

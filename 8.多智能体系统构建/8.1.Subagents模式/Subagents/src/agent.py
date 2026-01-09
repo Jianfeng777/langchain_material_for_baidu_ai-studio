@@ -53,29 +53,30 @@ def get_available_time_slots(
 
 model = ChatTongyi(model="qwen-max")  # for example
 
+from langchain.agents.middleware import HumanInTheLoopMiddleware
+
 calendar_agent = create_agent(
-    model,
-    tools=[create_calendar_event, get_available_time_slots],
-    system_prompt=(
-        "You are a calendar scheduling assistant. "
-        "Parse natural language scheduling requests (e.g., 'next Tuesday at 2pm') "
-        "into proper ISO datetime formats. "
-        "Use get_available_time_slots to check availability when needed. "
-        "Use create_calendar_event to schedule events. "
-        "Always confirm what was scheduled in your final response."
-    )
+  model,
+  tools=[create_calendar_event, get_available_time_slots],
+  system_prompt=("You are a calendar scheduling assistant..."),
+  middleware=[ 
+    HumanInTheLoopMiddleware( 
+      interrupt_on={"create_calendar_event": True}, 
+      description_prefix="Calendar event pending approval", 
+    ), 
+  ], 
 )
 
 email_agent = create_agent(
-    model,
-    tools=[send_email],
-    system_prompt=(
-        "You are an email assistant. "
-        "Compose professional emails based on natural language requests. "
-        "Extract recipient information and craft appropriate subject lines and body text. "
-        "Use send_email to send the message. "
-        "Always confirm what was sent in your final response."
-    )
+  model,
+  tools=[send_email],
+  system_prompt=("You are an email assistant... "),
+  middleware=[ 
+    HumanInTheLoopMiddleware( 
+      interrupt_on={"send_email": True}, 
+      description_prefix="Outbound email pending approval", 
+    ), 
+  ], 
 )
 
 # ============================================================================
@@ -118,6 +119,7 @@ def manage_email(request: str) -> str:
 # ============================================================================
 # Step 4: Create the supervisor agent
 # ============================================================================
+
 
 agent = create_agent(
     model,
