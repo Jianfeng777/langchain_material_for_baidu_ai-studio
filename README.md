@@ -101,8 +101,8 @@
 
 ```bash
 # 1) 克隆仓库
-git clone git@github.com:SmartFlowAI/langchain_material_for_baidu_ai-studio.git
-cd langchain_material_for_baidu_ai-studio
+git clone <your-repo-url>
+cd <your-repo-name>
 
 # 2) 创建环境
 conda env create -f environment.yml
