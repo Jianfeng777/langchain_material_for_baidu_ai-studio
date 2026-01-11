@@ -2,8 +2,10 @@
 
 <div align="center">
 
-面向**初学者**的 LLM 应用开发全栈课程：从模型调用到 RAG、Agent、多智能体、评估与部署。  
-配套完整中文 Notebook + 可运行代码，帮助你从 0 到 1 构建可落地的 LLM 应用。
+<img src="./images/cover.png" width="90%" />
+
+面向 **初学者** 的 LLM 应用开发全栈课程：  
+从模型调用到 RAG、Agent、多智能体、评估与部署。  
 
 ![Python](https://img.shields.io/badge/Python-3.12%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -11,12 +13,14 @@
 
 </div>
 
+
 ---
 
 ## 🎯 课程定位
 
-这是一个**体系完整、结构清晰、面向工程实践**的 LLM 应用开发课程。内容覆盖 LangChain 文档的大部分核心能力，并补充了旧版本中仍常用的实践，同时剔除了已弃用的内容。  
-你将从「模型调用」出发，逐步掌握 Gradio、LangChain、RAG、Agent、多智能体、LangGraph 与 LangSmith，完成一条完整的工程学习路径。
+本课程是一门**体系完整、结构清晰、面向工程实践**的 LLM 应用开发课程。内容覆盖 LangChain 文档的大部分核心能力，并补充了旧版本中仍常用的实践，同时剔除了已弃用的内容。  
+
+你将从「模型调用」出发，逐步掌握 Gradio、LangChain、RAG、Agent、Multi-Agent、LangGraph 与 LangSmith，完成一条完整的工程学习路径。
 
 ---
 
@@ -37,33 +41,32 @@
 - 提示词与基础调用范式
 
 ### 2️⃣ 智能交互界面开发实战（Gradio）
-- Interface 快速搭建与参数配置
-- Blocks 布局组件：Row / Column / Tab / Accordion
-- 弹窗系统、进度条、事件与状态管理
+- Interface 快速搭建
+- Blocks 布局实操
+- 弹窗系统、进度条、事件与状态管理等辅助功能
 
 ### 3️⃣ LangChain 核心组件与运行机制
-- 模型调用：OpenAI 格式 / LangChain 格式 / 多轮并发
+- 模型调用
 - PromptTemplate 与 ChatPromptTemplate
-- 链式流程与 LCEL（RunnableLambda、函数节点）
+- 链式流程（LCEL）
 - 对话记忆：全量记忆 / 摘要 / 压缩策略
 - 流式输出与输出解析器（Parser）
 
 ### 4️⃣ 检索增强搜索（RAG）应用实战
-- 文档载入：txt / pdf / csv / url / ipynb
-- 文档切分：Character / Recursive / Markdown
-- Embedding 与向量库存储（InMemory / Chroma）
-- 检索策略：相似度搜索 / MMR
-- 提示词与前端展示
+- 文档载入：txt / pdf / csv / url / ...
+- 文档切分：Character / Recursive / ...
+- Embedding 与向量库存储：InMemory / Chroma / ...
+- 检索策略：相似度搜索 / MMR / ...
 
 ### 5️⃣ 智能体系统设计与应用实践
-- 原生 ReAct Agent 构建（LLM / Memory / Tool / Prompt）
-- LangChain Agent 结构化搭建
-- 流式输出模式与 ChatInterface 实现
+- 原生 ReAct Agent 构建
+- 基于 LangChain V1 的 Agent 搭建
+- Agent 流式输出与结构化输出
 - LangSmith Studio 部署与可视化
 
 ### 6️⃣ 智能体中间件与流程控制实战
-- 自定义中间件（Decorator / Class / Node-style hooks）
-- 内置中间件：模型降级、工具重试、调用限制
+- 自定义中间件（Decorator / Class）
+- 内置中间件：模型降级、工具重试、调用限制...
 - 记忆管理：裁剪 / 删除 / 摘要
 - 安全防护：PII 脱敏 / 人工审核 / 安全审查
 
@@ -81,91 +84,32 @@
 
 ### 9️⃣ 大模型系统的测试、评估与部署
 - Callback 与链路回调
-- LangSmith Tracing：wrap_openai / @traceable
-- 评估体系：数据集、评估器、评估流程
-- 自动化测试：轨迹匹配与严格评估
+- 大模型跟踪：wrap_openai / @traceable / ...
+- 评估体系：数据集、评估器、评估流程...
+- 自动化测试：轨迹匹配与基于大模型的评估测试
 
 ---
 
 ## 🚀 快速开始
 
-### 前置要求
-
-- Python **3.12+**
-- Conda（推荐）或 Pip / venv
-- 内存建议 **4GB+**
-
-建议先阅读 `environment.yml` / `requirements.txt` 并配置模型 API Key。
-
 ### 环境配置（Conda，推荐）
 
 ```bash
 # 1) 克隆仓库
-git clone <your-repo-url>
-cd <your-repo-name>
+git clone git@github.com:SmartFlowAI/langchain_material_for_baidu_ai-studio.git
+cd langchain_material_for_baidu_ai-studio
 
 # 2) 创建环境
-conda env create -f environment.yml
+conda create -n langchain_course python=3.12 -y
+conda activate langchain_course
+pip install -r requirements.txt
+
+# 或直接通过 environment.yml 进行安装
+# conda env create -f environment.yml
 
 # 3) 激活环境
 conda activate langchain_course
 ```
-
-### 环境配置（Pip）
-
-```bash
-# 1) 克隆仓库
-git clone <your-repo-url>
-cd <your-repo-name>
-
-# 2) 创建虚拟环境
-python -m venv venv
-
-# 3) 激活虚拟环境
-# Windows:
-venv\Scripts\activate
-# Linux/macOS:
-source venv/bin/activate
-
-# 4) 安装依赖
-pip install -r requirements.txt
-```
-
-### 运行 Notebook
-
-```bash
-# Jupyter Notebook
-jupyter notebook
-
-# 或使用 JupyterLab（推荐）
-jupyter lab
-```
-
-### 运行 Gradio 示例
-
-```bash
-# 进入示例目录（按你的实际路径选择）
-cd "2.智能交互界面开发实战（Gradio）/2.2.Interface_页面构建/gradio运行代码（ai-studio）"
-
-# 运行示例
-python "1.快速创建.gradio.py"
-```
-
----
-
-## 🧭 学习指引（建议路径）
-
-### 0️⃣ 快速上手（30~60 分钟）
-1. 完成第 1 章「模型调用」与「流式输出」
-2. 运行第 2 章 Interface 示例，搭建第一个可交互页面
-3. 浏览第 4 章「文档切分 + 向量检索」，体验 RAG 流程
-
-### 1️⃣ 系统掌握（推荐主线）
-1. 第 1 章 → 第 3 章：打牢模型调用与 LangChain 组件基础
-2. 第 4 章：完成 RAG 全流程
-3. 第 5-6 章：掌握 Agent 与流程控制
-4. 第 7-8 章：扩展工具与多智能体架构
-5. 第 9 章：掌握评估、测试与可观测性
 
 ---
 
@@ -176,6 +120,7 @@ python "1.快速创建.gradio.py"
 ├── environment.yml
 ├── requirements.txt
 ├── README.md
+├── images/
 │
 ├── 1.大语言模型应用基础/
 ├── 2.智能交互界面开发实战（Gradio）/
@@ -213,8 +158,6 @@ python "1.快速创建.gradio.py"
 - **机智流**
 - **百度飞桨星河社区（AI Studio）**
 - **LangChain 团队**
-- **Gradio 团队**
-
 ---
 
 ## 📮 联系方式
